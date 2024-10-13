@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}校园博客{% endblock %}
+
+{% block main %}
+    <h1>博客列表</h1>
+    <div class="row row-cols-3 row-gap-3">
+    {% for blog in blogs %}
+    	
+    
+    
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <a href="{% url 'blog:blog_detail' blog_id=blog.id %}">{{ blog.title }}</a>
+                </div>
+                <div class="card-body" style="height:120px">
+
+                    <p class="card-text">{{ blog.content|striptags|truncatechars:50 }}</p>
+
+                </div>
+                <div class="card-footer text-body-secondary d-flex justify-content-between">
+                    <div>
+                        <img src="{% static 'image/image2.png' %}" class="rounded" alt="" height="30" width="30">
+                        <span class="ms-2">{{ blog.author.username }}</span>
+                    </div>
+                    <div>
+                        {{ blog.pub_time|date:'Y年m月d日 h时i分' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

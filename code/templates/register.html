@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}注册{% endblock %}
+
+{% block head %}
+    <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/register.js' %}"></script>
+    
+{% endblock %}
+
+{% block main %}
+    <div style="max-width: 330px" class="m-auto"> 
+        <h2>请注册</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="md-3">
+                <label class="mb-1 mt-1">用户名</label>
+                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+            </div>
+            <div class="md-3">
+                <label class="mb-1 mt-1">邮箱</label>
+                <input type="email" name="email" class="form-control" placeholder="请输入邮箱">
+            </div>
+            <div class="md-3">
+                <label class="mb-1 mt-1">密码</label>
+                <input type="password" name="password" class="form-control" placeholder="请输入密码">
+            </div>
+
+            <div class="input-group mt-1 md-3">
+                <label class="mb-1 mt-1">验证码</label>
+                <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入验证码" name="captcha"
+                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="captcha" >发送验证码</button>
+            </div>
+            </div>
+            
+            <div class="mt-4 mb-5">
+                <button class="btn btn-primary w-100">注册</button>
+            </div>
+            
+        </form>
+         
+    </div>
+{% endblock %}
